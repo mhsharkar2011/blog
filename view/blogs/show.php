@@ -18,4 +18,3 @@ if ($results) {
     }
 }
 
-$create = "INSERT INTO users WHERE "
