@@ -1,32 +1,46 @@
 <?php
-
 class Database
 {
-    private static $obj;
-    private $db_connect;
+    public $host   = DB_HOST;
+    public $user   = DB_USER;
+    public $pass   = DB_PASSWORD;
+    public $dbname = DB_NAME;
 
-    private final function __construct()
+    public $link;
+    public $error;
+
+    public function __construct()
     {
-        $host = DB_HOST;
-        $user = DB_USER;
-        $pass = DB_PASSWORD;
-        $dbname = DB_NAME;
-
-        $this->db_connect = new mysqli($host, $user, $pass, $dbname);
+        $this->connectDB();
     }
 
-    public static function getConnect()
+    public function connectDB()
     {
-        if (!isset(self::$obj)) {
-            self::$obj = new Database;
+        
+        $this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+        if (!$this->link) {
+            $this->error = "Connection Fail" . $this->link->connect_error;
+            return false;
         }
-        return self::$obj;
     }
 
+    // Insert data
+    public function insert($query)
+    {
+        $insert_row = $this->link->query($query) or
+            die($this->link->error . __LINE__);
+        if ($insert_row) {
+            return $insert_row;
+        } else {
+            return false;
+        }
+    }
+
+    // Select or Read data
     public function select($query)
     {
-        $result = $this->db_connect->query($query) or die($this->db_connect->error . __LINE__);
-
+        $result = $this->link->query($query) or
+            die($this->link->error . __LINE__);
         if ($result->num_rows > 0) {
             return $result;
         } else {
@@ -34,12 +48,25 @@ class Database
         }
     }
 
-    public function create($query)
+    // Update data
+    public function update($query)
     {
-        $result = $this->db_connect->query($query) or die($this->db_connect->error . __LINE__);
+        $update_row = $this->link->query($query) or
+            die($this->link->error . __LINE__);
+        if ($update_row) {
+            return $update_row;
+        } else {
+            return false;
+        }
+    }
 
-        if ($result->num_rows > 0) {
-            return $result;
+    // Delete data
+    public function delete($query)
+    {
+        $delete_row = $this->link->query($query) or
+            die($this->link->error . __LINE__);
+        if ($delete_row) {
+            return $delete_row;
         } else {
             return false;
         }
