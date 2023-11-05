@@ -1,4 +1,30 @@
+<?php
+echo "<br />";
 
+if (isset($_POST['submit'])) {
+    $userName = $_POST['username'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $coder = $_POST['coder'];
+
+    echo "Username:" . $userName;
+    echo "<br> Email:" . $email;
+    if ($gender == 'Male') {
+        echo "<br /> You are a:" . $gender;
+    } elseif ($gender == "Female") {
+        echo "<br /> You are a:" . $gender;
+    } else {
+        echo "<br/>" . $gender;
+    }
+    echo "<br> You have selected: ";
+    $selectedLanguage = [];
+    foreach ($coder as $lang => $value){
+        $selectedLanguage[] = $value;
+    }
+    echo implode(', ', $selectedLanguage);
+    
+}
+?>
 
 <body>
     <form action="" method="post" enctype="multipart/form-data" name="userForm" id="userFormId">
@@ -24,6 +50,13 @@
             </tr>
             <tr>
                 <td>
+                    <input type="checkbox" name="coder[]" value="PHP">PHP
+                    <input type="checkbox" name="coder[]" value="JAVA">JAVA
+                    <input type="checkbox" name="coder[]" value="C#">C#
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <select class="form-group" name="city" id="city">
                         <option value="">Select City</option>
                         <option value="dhaka">Dhaka</option>
@@ -42,23 +75,3 @@
 </body>
 
 </html>
-
-
-<?php
-echo "<br />";
-
-if (isset($_POST['submit'])) {
-    $userName = $_POST['username'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    echo "Username:" . $userName;
-    echo "<br> Email:" . $email;
-    if ($gender == 'Male') {
-        echo "<br /> You are a:" . $gender;
-    } elseif ($gender == "Female") {
-        echo "<br /> You are a:" . $gender;
-    } else {
-        echo "<br/>" . $gender;
-    }
-}
-?>
