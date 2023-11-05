@@ -2,8 +2,17 @@
     function userFormSub() {
         var userName = document.userForm.name.value;
         var userEmail = document.userForm.email.value;
-        var userGender = document.userForm.gender.value;
-        var show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + userGender;
+        var genderLeng = document.userForm.gender.length;
+        // var userGender = document.userForm.gender.value;
+        for(i=0; i<genderLeng; i++){
+            var checkValue = document.userForm.gender[i].checked;
+            if(checkValue){
+                var checkResult = document.userForm.gender.value;
+                console.log(checkResult)
+            }
+        }
+        
+        var show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + checkResult;
         document.getElementById('output').innerHTML = show;
     }
 </script>
