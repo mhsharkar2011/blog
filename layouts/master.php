@@ -1,4 +1,4 @@
-<?php require_once "layouts/frontend/header.php"; ?>
+<?php require_once "frontend/header.php"; ?>
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
@@ -261,13 +261,6 @@
         </div>
     </section>
     <!-- ***** Testimonials Item End ***** -->
-    
-
-
-
-
-
-
-
+   
     <!-- ***** Footer Start ***** -->
-   <?php require_once "layouts/frontend/footer.php" ?>
+   <?php require_once "frontend/footer.php" ?>

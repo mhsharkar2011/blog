@@ -1,43 +1,64 @@
+
+
+<body>
+    <form action="" method="post" enctype="multipart/form-data" name="userForm" id="userFormId">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Username: </label>
+                    <input type="text" name="username" required placeholder="Enter Username here" value="Monir">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" required placeholder="Enter Email here" value="monir@gmail.com">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                    <input type="radio" name="gender" value="Others"> Others
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select class="form-group" name="city" id="city">
+                        <option value="">Select City</option>
+                        <option value="dhaka">Dhaka</option>
+                        <option value="khulna">Khulna</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button name="submit">Submit</button>
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
+
+
 <?php
-include "../../database/Database.php";
-include "../../config/Config.php";
+echo "<br />";
 
-$id = $_GET['id'];
-$db = Database::getConnect();
-$query = "SELECT * FROM users";
-$show = "SELECT * FROM users WHERE id = $id";
-
-$results = $db->select($query);
-$userShow = $db->select($show);
-
-if ($results) {
-    while ($data = $results->fetch_object()) {
-        echo "ID: " . $data->id . "<br>";
-        echo "First Name: " . $data->first_name . "<br>";
-        echo "Last Name: " . $data->last_name . "<br>";
-        echo "Email: " . $data->email . "<br>";
-        echo "--------------------------<br>";
+if (isset($_POST['submit'])) {
+    $userName = $_POST['username'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    echo "Username:" . $userName;
+    echo "<br> Email:" . $email;
+    if ($gender == 'Male') {
+        echo "<br /> You are a:" . $gender;
+    } elseif ($gender == "Female") {
+        echo "<br /> You are a:" . $gender;
+    } else {
+        echo "<br/>" . $gender;
     }
 }
-
-if ($userShow) {
-    while ($data = $userShow->fetch_object()) {
-        echo "ID: " . $data->id . "<br>";
-        echo "First Name: " . $data->first_name . "<br>";
-        echo "Last Name: " . $data->last_name . "<br>";
-        echo "Email: " . $data->email . "<br>";
-        echo "--------------------------<br>";
-    }
-}
-
-// $newFirstName = 'Jon';
-// $newLastName = 'Doe';
-// $newEmail = 'jon@mail.com';
-// $newPassword = password_hash('password', PASSWORD_DEFAULT); 
-
-// $query = "INSERT INTO users (first_name, last_name, email,password) VALUES ('$newFirstName','$newLastName','$newEmail','$newPassword')";
-// $stmt = $db->create($query);
-
-
-$query = "DELETE FROM users WHERE id = 3";
-$result = $db->delete($query);
+?>

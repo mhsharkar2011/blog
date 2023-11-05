@@ -1,12 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
 <body>
     <form action="" method="post" enctype="multipart/form-data" name="userForm" id="userFormId">
@@ -32,6 +24,15 @@
             </tr>
             <tr>
                 <td>
+                    <select class="form-group" name="city" id="city">
+                        <option value="">Select City</option>
+                        <option value="dhaka">Dhaka</option>
+                        <option value="khulna">Khulna</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <button name="submit">Submit</button>
                     <input type="reset" value="reset">
                 </td>
@@ -52,11 +53,11 @@ if (isset($_POST['submit'])) {
     $gender = $_POST['gender'];
     echo "Username:" . $userName;
     echo "<br> Email:" . $email;
-    if($gender == 'Male'){
+    if ($gender == 'Male') {
         echo "<br /> You are a:" . $gender;
-    }elseif($gender == "Female"){
+    } elseif ($gender == "Female") {
         echo "<br /> You are a:" . $gender;
-    }else{
+    } else {
         echo "<br/>" . $gender;
     }
 }

@@ -45,7 +45,7 @@
                             <li><a href="index.html" class="active">Home</a></li>
                             <li><a href="jobs.html">Jobs</a></li>
                             <li><a href="jobs.html">About Us</a></li>
-                            <li><a href="jobs.html">Blog</a></li>
+                            <li><a href="../../view/blogs/index.php">Blog</a></li>
                             <!-- 
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>

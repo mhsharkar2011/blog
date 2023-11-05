@@ -2,7 +2,8 @@
     function userFormSub() {
         var userName = document.userForm.name.value;
         var userEmail = document.userForm.email.value;
-        var show = "Username: " + userName + "<br> Email: " + userEmail;
+        var userGender = document.userForm.gender.value;
+        var show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + userGender;
         document.getElementById('output').innerHTML = show;
     }
 </script>
@@ -18,7 +19,7 @@
 
 <body>
     <div id="output"></div>
-    <form name="userForm" id="userFormId" onmouseenter="userFormSub(); return false;">
+    <form name="userForm" id="userFormId" onsubmit="userFormSub(); return false;">
         <table>
             <tr>
                 <td>
@@ -34,7 +35,14 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="Submit">
+                    <input type="radio" name="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female
+                    <input type="radio" name="gender" value="Others">Others
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="submit" id="submit">Submit</button>
                     <input type="reset" value="reset">
                 </td>
             </tr>
