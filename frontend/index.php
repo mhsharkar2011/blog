@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="container mt-5 justify-content-center">
     <div style="display: flex; justify-content:center">
-        <h1>This is User input Form</h1>
+        <h1>PHP Registration Form</h1>
     </div>
-    <div class="form-row col-md-6 needs-validation mt-5" style="float: left;">
-        <form action="" method="post">
+    <div class="form-row col-md-6 needs-validation mt-3" style="float: left;">
+        <form action="" method="post" class="border rounded p-4">
             <label for="validationTooltip01">First name</label>
             <input type="text" name="first_name" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
             <div class="valid-tooltip">
@@ -56,7 +56,7 @@
         $gender = $_POST['gender'];
         $subject = $_POST['subject'];
     ?>
-        <div class="form-row col-md-6 needs-validation mt-5" style="float: left;">
+        <div class="form-row col-md-6 needs-validation mt-3 border rounded p-4" style="float: left;">
             <table class="table table-responsive table-sm">
                 <thead>
                     <tr>
