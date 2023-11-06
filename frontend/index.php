@@ -24,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <select name="country" class="custom-select">
-                    <option selected>Select Country</option>
+                    <option value="">Select Country</option>
                     <option value="Bangladesh">Bangladesh</option>
                     <option value="India">India</option>
                     <option value="Japan">Japan</option>
@@ -37,10 +37,10 @@
             </div>
             <div class="mb-3">
                 Select Subjects
-                <input class="mx-2" type="checkbox" name="subject" value="Bangla"> Bangla
-                <input class="mx-2" type="checkbox" name="subject" value="English"> English
-                <input class="mx-2" type="checkbox" name="subject" value="Math"> Math
-                <input class="mx-2" type="checkbox" name="subject" value="Science"> Science
+                <input class="mx-2" type="checkbox" name="subject[]" value="Bangla"> Bangla
+                <input class="mx-2" type="checkbox" name="subject[]" value="English"> English
+                <input class="mx-2" type="checkbox" name="subject[]" value="Math"> Math
+                <input class="mx-2" type="checkbox" name="subject[]" value="Science"> Science
             </div>
             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
         </form>
@@ -53,11 +53,10 @@
         $lname = $_POST['last_name'];
         $email = $_POST['email'];
         $country = $_POST['country'];
-        
         $gender = $_POST['gender'];
         $subject = $_POST['subject'];
     ?>
-         <div class="form-row col-md-6 needs-validation mt-5" style="float: left;">
+        <div class="form-row col-md-6 needs-validation mt-5" style="float: left;">
             <table class="table table-responsive table-sm">
                 <thead>
                     <tr>
@@ -74,9 +73,34 @@
                         <td><?php echo $fname ?></td>
                         <td><?php echo $lname ?></td>
                         <td><?php echo $email ?></td>
-                        <td><?php echo $country ?></td>
-                        <td><?php echo $gender ?></td>
-                        <td><?php echo $subject ?></td>
+                        <td>
+                            <?php
+                            if ($country) {
+                                echo $country;
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($gender == "Male") {
+                                echo $gender;
+                            }elseif($gender == "Female"){
+                                echo $gender;
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            $selectedSubject = [];
+                            foreach($subject as $key=>$value){
+                                $selectedSubject[] = $value;
+                            }
+                            $totalSubject = implode(', ', $selectedSubject);
+                            if(!empty($selectedSubject)){
+                                echo $totalSubject;
+                            }
+                            ?>
+                         </td>
                     </tr>
                 </tbody>
             </table>
