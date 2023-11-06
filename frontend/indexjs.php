@@ -1,28 +1,44 @@
 <script>
     function userFormSub() {
+        // Input field value -----------------------------
         let userName = document.userForm.name.value;
+        userName = "Username: " + userName;
         let userEmail = document.userForm.email.value;
+        userEmail = "<br>Email: " + userEmail;
+        // ------------------------------------------------
+        // Radio button value -----------------------------
         let userGender = document.userForm.gender.value;
+        if(userGender){
+            userGender = "<br>Gender: " + userGender;
+        }
+        // ------------------------------------------------
+
+        // checkbox Values --------------------------------
         let coderLeng = document.userForm.coder.length;
-        // Select Multiple Value with checkbox
         let selectedLang = [];
-        for(i=0; i<coderLeng; i++){
+        for (i = 0; i < coderLeng; i++) {
             let checked = document.userForm.coder[i].checked;
-            if(checked){
+            if (checked) {
                 let coderValue = document.userForm.coder[i].value;
                 selectedLang.push(coderValue);
             }
         }
         let totalSelectedLanguage = selectedLang.join(', ');
-        // End
+        if(totalSelectedLanguage){
+            totalSelectedLanguage = "<br>You have selected multiple language " + selectedLang
+        }
+        // ------------------------------------------------
 
-        // Select a value from select option or select List 
+        // Select Option list ----------------------------- 
         var index = document.userForm.languageMark.selectedIndex;
         var mark = document.userForm.languageMark.options[index].value;
-        
+        if(mark){
+            mark = "<br>Your Mark is: " + mark;
+        }
+        // ------------------------------------------------
 
-        let show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + userGender + "<br>You have selected multiple Language: " + totalSelectedLanguage + "<br>Your Mark is: " + mark;
-
+        let show = userName + userEmail + userGender + totalSelectedLanguage + mark;
+        // Show All Result in HTML Dom
         document.getElementById('output').innerHTML = show;
     }
 </script>
