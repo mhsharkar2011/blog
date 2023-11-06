@@ -1,18 +1,19 @@
 <script>
     function userFormSub() {
-        var userName = document.userForm.name.value;
-        var userEmail = document.userForm.email.value;
-        var genderLeng = document.userForm.gender.length;
-        // var userGender = document.userForm.gender.value;
-        for(i=0; i<genderLeng; i++){
-            var checkValue = document.userForm.gender[i].checked;
-            if(checkValue){
-                var checkResult = document.userForm.gender.value;
-                console.log(checkResult)
+        let userName = document.userForm.name.value;
+        let userEmail = document.userForm.email.value;
+        let userGender = document.userForm.gender.value;
+        let coderLeng = document.userForm.coder.length;
+        let selectedLang = [];
+        for(i=0; i<coderLeng; i++){
+            let checked = document.userForm.coder[i].checked;
+            if(checked){
+                let coderValue = document.userForm.coder[i].value;
+                selectedLang.push(coderValue);
             }
         }
-        
-        var show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + checkResult;
+        let totalSelectedLanguage = selectedLang.join(', ');
+        let show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + userGender + "<br>You have selected multiple Language: " + totalSelectedLanguage;
         document.getElementById('output').innerHTML = show;
     }
 </script>
@@ -33,13 +34,13 @@
             <tr>
                 <td>
                     <label for="name">Name: </label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" required value="Monir Hossain">
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="email">Email: </label>
-                    <input type="text" name="email" required>
+                    <input type="text" name="email" required value="monir@gmail.com">
                 </td>
             </tr>
             <tr>
@@ -47,6 +48,13 @@
                     <input type="radio" name="gender" value="Male">Male
                     <input type="radio" name="gender" value="Female">Female
                     <input type="radio" name="gender" value="Others">Others
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="coder" value="PHP">PHP
+                    <input type="checkbox" name="coder" value="JAVA">JAVA
+                    <input type="checkbox" name="coder" value="MYSQL">MYSQL
                 </td>
             </tr>
             <tr>
