@@ -4,6 +4,7 @@
         let userEmail = document.userForm.email.value;
         let userGender = document.userForm.gender.value;
         let coderLeng = document.userForm.coder.length;
+        // Select Multiple Value with checkbox
         let selectedLang = [];
         for(i=0; i<coderLeng; i++){
             let checked = document.userForm.coder[i].checked;
@@ -13,7 +14,15 @@
             }
         }
         let totalSelectedLanguage = selectedLang.join(', ');
-        let show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + userGender + "<br>You have selected multiple Language: " + totalSelectedLanguage;
+        // End
+
+        // Select a value from select option or select List 
+        var index = document.userForm.languageMark.selectedIndex;
+        var mark = document.userForm.languageMark.options[index].value;
+        
+
+        let show = "Username: " + userName + "<br> Email: " + userEmail + "<br/> Gender: " + userGender + "<br>You have selected multiple Language: " + totalSelectedLanguage + "<br>Your Mark is: " + mark;
+
         document.getElementById('output').innerHTML = show;
     }
 </script>
@@ -55,6 +64,16 @@
                     <input type="checkbox" name="coder" value="PHP">PHP
                     <input type="checkbox" name="coder" value="JAVA">JAVA
                     <input type="checkbox" name="coder" value="MYSQL">MYSQL
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="languageMark">
+                        <option value="">Select your mark</option>
+                        <option value="50">50</option>
+                        <option value="60">60</option>
+                        <option value="70">70</option>
+                    </select>
                 </td>
             </tr>
             <tr>

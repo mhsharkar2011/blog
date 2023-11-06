@@ -13,16 +13,22 @@ if (isset($_POST['submit'])) {
         echo "<br /> You are a:" . $gender;
     } elseif ($gender == "Female") {
         echo "<br /> You are a:" . $gender;
-    } else {
-        echo "<br/>" . $gender;
+    } elseif($gender == "Others") {
+        echo "<br/> You are " . $gender;
     }
-    echo "<br> You have selected: ";
     $selectedLanguage = [];
-    foreach ($coder as $lang => $value){
+    foreach ($coder as $lang => $value) {
         $selectedLanguage[] = $value;
     }
-    echo implode(', ', $selectedLanguage);
-    
+    $totalLanguage = implode(', ', $selectedLanguage);
+    if(!empty($selectedLanguage)){
+        echo "<br>You have selected " . $totalLanguage;
+    }
+
+    $city = $_POST['city'];
+    if ($city) {
+        echo "<br>Your city is " . $city;
+    }
 }
 ?>
 
@@ -59,8 +65,8 @@ if (isset($_POST['submit'])) {
                 <td>
                     <select class="form-group" name="city" id="city">
                         <option value="">Select City</option>
-                        <option value="dhaka">Dhaka</option>
-                        <option value="khulna">Khulna</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Khulna">Khulna</option>
                     </select>
                 </td>
             </tr>
